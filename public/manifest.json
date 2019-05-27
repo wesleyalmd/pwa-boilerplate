@@ -1,5 +1,6 @@
 {
   "name": "PWA Boilerplate",
+  "short_name": "PWA",
   "theme_color": "#333333",
   "background_color": "#333333",
   "display": "standalone",

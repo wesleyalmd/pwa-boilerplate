@@ -31,7 +31,7 @@ module.exports = (env, args) => {
           MODE: JSON.stringify(args.mode),
         },
       }),
-      new CopyPlugin(['./static']),
+      new CopyPlugin(['./public']),
       new webpack.HotModuleReplacementPlugin(),
     ],
     devtool: development ? 'inline-source-map' : 'none',
