@@ -9,6 +9,6 @@ const App = ({ appName, children }) => (
   </Main>
 );
 
-const mapStateToProps = ({ home }) => ({ appName: home.appName });
+const mapStateToProps = ({ home: { appName } }) => ({ appName });
 
 export default connect(mapStateToProps)(App);

@@ -31,7 +31,7 @@ module.exports = (env, args) => {
           MODE: JSON.stringify(args.mode),
         },
       }),
-      new CopyPlugin(['./public']),
+      new CopyPlugin(['./static']),
       new webpack.HotModuleReplacementPlugin(),
     ],
     devtool: development ? 'inline-source-map' : 'none',
@@ -45,39 +45,11 @@ module.exports = (env, args) => {
           },
         },
         {
-          test: /\.(jpe?g|ico|png|gif|svg)$/i,
-          loader: 'file-loader?name=img/[name].[ext]',
-        },
-        {
-          test: /\.(otf|ttf)$/i,
-          loader: 'file-loader?name=fonts/[name].[ext]',
-        },
-        {
-          test: /\.css$/,
-          use: [{ loader: 'style-loader' }, { loader: 'css-loader' }],
-        },
-        {
-          test: /\.scss$/,
-          use: [
-            { loader: 'style-loader' },
-            {
-              loader: 'css-loader',
-              options: { sourceMap: development },
-            },
-            {
-              loader: 'sass-loader',
-              options: { sourceMap: development },
-            },
-          ],
-        },
-        {
           test: /\.html$/,
-          use: [
-            {
-              loader: 'html-loader',
-              options: { minimize: true },
-            },
-          ],
+          use: {
+            loader: 'html-loader',
+            options: { minimize: true },
+          },
         },
       ],
     },

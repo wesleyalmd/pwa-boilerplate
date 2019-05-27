@@ -1,9 +1,1 @@
-import styled from 'styled-components';
-
-export default styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #fff;
-  margin: 40px;
-`;
+export { default as Container } from './Container';

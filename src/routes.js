@@ -6,7 +6,7 @@ import NotFound from '@/containers/NotFound';
 
 export const appRoutes = [
   {
-    path: '/home',
+    path: '/',
     exact: true,
     component: Home,
   },

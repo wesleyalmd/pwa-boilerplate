@@ -1,8 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { home as actions } from '@/redux/actions';
+import { changeReduxStoreCounter } from '@/redux/actions';
 import { Button } from '@/components';
-import BaseApi from '@/api/BaseApi';
 
 const Home = ({ reduxStoreCounter, changeReduxStoreCounter }) => (
   <Button onClick={() => changeReduxStoreCounter(reduxStoreCounter + 1)}>
@@ -10,12 +9,11 @@ const Home = ({ reduxStoreCounter, changeReduxStoreCounter }) => (
   </Button>
 );
 
-const mapStateToProps = ({ home }) => ({ reduxStoreCounter: home.reduxStoreCounter });
+const mapStateToProps = ({ home: { reduxStoreCounter } }) => ({ reduxStoreCounter });
 
-const mapDispatchToProps = dispatch => ({
-  changeReduxStoreCounter: reduxStoreCounter =>
-    dispatch(actions.changeReduxStoreCounter(reduxStoreCounter)),
-});
+const mapDispatchToProps = {
+  changeReduxStoreCounter
+}
 
 export default connect(
   mapStateToProps,

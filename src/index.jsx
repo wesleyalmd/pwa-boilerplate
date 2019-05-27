@@ -6,8 +6,7 @@ import { Provider } from 'react-redux';
 import store from '@/redux/store';
 import Routes from '@/routes';
 import App from '@/containers/App';
-import GlobalStyles from '@/components';
-import './assets/css/styles.scss';
+import { GlobalStyles } from '@/components';
 
 ReactDOM.render(
   <Router>

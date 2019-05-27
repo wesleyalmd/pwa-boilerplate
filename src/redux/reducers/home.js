@@ -10,6 +10,7 @@ export default (state = INITIAL_STATE, action) => {
         ...state,
         reduxStoreCounter: action.reduxStoreCounter,
       };
+
     default:
       return state;
   }

@@ -1,4 +1,4 @@
-import styled, { createGlobalStyle, css } from 'styled-components';
+import { createGlobalStyle, css } from 'styled-components';
 
 const global = css`
   * {
@@ -13,10 +13,6 @@ const global = css`
     padding: 0;
     height: 100%;
   }
-`;
-
-export const Main = styled.main`
-  height: 100%;
 `;
 
 export default createGlobalStyle`

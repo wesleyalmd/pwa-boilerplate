@@ -1,3 +1,1 @@
-import * as home from './home';
-
-export { home };
+export { changeReduxStoreCounter } from './home';
