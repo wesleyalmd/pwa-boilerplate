@@ -7,11 +7,11 @@ This boilerplate uses:
 - React Router 5
 - Babel 7
 - Webpack 4
-- Jest
-- Enzyme
-- Prettier
-- styled-components
-- Storybook
+- Jest 24.8
+- Enzyme 3.9
+- Prettier 1.17
+- Styled Components 4.2
+- Storybook 5.0
 
 # Usage
 

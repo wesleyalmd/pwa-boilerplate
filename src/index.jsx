@@ -1,3 +1,4 @@
+import './serviceWorker';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
@@ -22,18 +23,5 @@ ReactDOM.render(
   </Router>,
   document.getElementById('main'),
 );
-
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', () => {
-    navigator.serviceWorker.register('/sw.js').then(
-      ({ scope }) => {
-        console.log('ServiceWorker registration successful with scope: ', scope);
-      },
-      err => {
-        console.log('ServiceWorker registration failed: ', err);
-      },
-    );
-  });
-}
 
 if (module.hot) module.hot.accept();

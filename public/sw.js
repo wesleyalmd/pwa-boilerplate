@@ -11,23 +11,34 @@ const CACHE_SOURCES = [
   '/img/icon-192x192.png',
   '/img/icon-384x384.png',
   '/img/icon-512x512.png',
+  'index.html',
+  'main.js',
 ];
 
+function echo(label, show = true) {
+  return show && console.log(label);
+}
+
 self.addEventListener('install', event => {
+  echo('Service Worker: Installed');
   event.waitUntil(
-    caches.open(CACHE_VERSION).then(cache => {
-      return cache.addAll(CACHE_SOURCES);
-    }),
+    caches
+      .open(CACHE_VERSION)
+      .then(cache => {
+        echo('Service Worker: Caching Files');
+        cache.addAll(CACHE_SOURCES);
+      })
+      .then(() => self.skipWaiting()),
   );
 });
 
 self.addEventListener('activate', event => {
   event.waitUntil(
-    caches.keys().then(keys => {
+    caches.keys().then(cacheNames => {
       return Promise.all(
-        keys.map(key => {
-          // only keep CACHE_VERSION, delete all other caches
-          if (key !== CACHE_VERSION) {
+        cacheNames.map(cache => {
+          if (cache !== CACHE_VERSION) {
+            echo('Service Worker: Clearing Old Cache');
             return caches.delete(key);
           }
         }),
@@ -37,22 +48,6 @@ self.addEventListener('activate', event => {
 });
 
 self.addEventListener('fetch', event => {
-  event.respondWith(
-    caches.match(event.request).then(response => {
-      if (response) return response;
-
-      const request = event.request.clone();
-      return fetch(request).then(response => {
-        if (!response || response.status !== 200 || response.type !== 'basic') {
-          return response;
-        }
-
-        caches.open(CACHE_NAME).then(cache => {
-          cache.put(event.request, response.clone());
-        });
-
-        return response;
-      });
-    }),
-  );
+  echo('Service Worker: Fetching');
+  event.respondWith(fetch(event.request).catch(() => caches.match(event.request)));
 });

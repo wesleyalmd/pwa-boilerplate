@@ -1,6 +1,5 @@
 import React from 'react';
 import { configure, addParameters, addDecorator } from '@storybook/react';
-import { configureActions } from '@storybook/addon-actions';
 import { themes } from '@storybook/theming';
 
 addParameters({
@@ -8,11 +7,6 @@ addParameters({
     panelPosition: 'right',
     theme: themes.light,
   },
-});
-
-configureActions({
-  depth: 100,
-  limit: 20,
 });
 
 function loadStories() {
